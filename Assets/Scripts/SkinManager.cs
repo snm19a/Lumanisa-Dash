@@ -31,4 +31,9 @@ public class SkinManager : MonoBehaviour
         }
         sr.sprite = skins[selectedSkin];
     }
+
+    public void PlayGame()
+    {
+        SceneManager.LoadScene("RunLevel");
+    }
 }

@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/RunLevel.unity
     guid: 0036b24dbfe509a44b6134cf6430af40
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/FlyLevel.unity
     guid: 5fd18a4502993cc4ba63a2bf1d4b375a
   m_configObjects: {}
