@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
-    [Header("yah")]
+    [Header("General")]
     public bool Flying;
+    public Transform groundCheck;
+    public LayerMask groundLayer;
+    private bool Grounded;
 
     [Header("Jumping Info")]
-    public int jumpCount;
+    public int DoubleJumpCount;
     private int jumpsExpended;
     public float JumpUpForce;
 
@@ -27,11 +30,19 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Ground Check
+
+        Grounded = IsGrounded();
+        if (Grounded == true)
+        {
+            jumpsExpended = 0;
+        }
+
         if (Input.GetMouseButtonDown (0))
         {
             if (!Flying)
             {
-                if (jumpCount > jumpsExpended)
+                if (DoubleJumpCount > jumpsExpended || Grounded)
                 {
                     jumpsExpended++;
                     rb2d.velocity = Vector2.zero;
@@ -54,5 +65,10 @@ public class PlayerScript : MonoBehaviour
             }
             
         }       
+    }
+
+    private bool IsGrounded()
+    {
+        return Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
     }
 }
