@@ -7,7 +7,7 @@ public class ScrollingBackground : MonoBehaviour
     public float speed;
 
     [SerializeField]
-    private Renderer bgRenderer;
+    public Renderer bgRenderer;
 
 
     void Update()

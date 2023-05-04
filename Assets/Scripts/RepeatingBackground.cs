@@ -5,11 +5,14 @@ using UnityEngine;
 public class RepeatingBackground : MonoBehaviour
 {
     public GameObject loopPosition;
-    public GameObject resetPosition;
+    public float loopOffset;
+    private BoxCollider2D groundCollider;
+    private float groundHorizontalLength;
 
     void Start()
     {
-
+        groundCollider = GetComponent<BoxCollider2D> ();
+        groundHorizontalLength = groundCollider.size.x;
     }
 
     // Update is called once per frame
@@ -21,6 +24,7 @@ public class RepeatingBackground : MonoBehaviour
 
     private void RepositionBackground()
     {
-        transform.position = resetPosition.transform.position;
+        Vector2 groundOffset = new Vector2 (groundHorizontalLength * loopOffset, 0);
+        transform.position = (Vector2) transform.position + groundOffset;
     }
 }
