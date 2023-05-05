@@ -10,6 +10,10 @@ public class PlayerScript : MonoBehaviour
     public LayerMask groundLayer;
     private bool Grounded;
 
+    [Header("Dying Info")]
+    public Transform deathCheck;
+    public LayerMask obstacleLayer;
+
     [Header("Jumping Info")]
     public int DoubleJumpCount;
     private int jumpsExpended;
@@ -38,37 +42,49 @@ public class PlayerScript : MonoBehaviour
             jumpsExpended = 0;
         }
 
-        if (Input.GetMouseButtonDown (0))
+        if (IsDead())
         {
-            if (!Flying)
-            {
-                if (DoubleJumpCount > jumpsExpended || Grounded)
-                {
-                    jumpsExpended++;
-                    rb2d.velocity = Vector2.zero;
-                    rb2d.AddForce(new Vector2(0, JumpUpForce));
-                }
-            }
-            else
-            {
-                rb2d.AddForce(new Vector2(0, FlyBoost));
-
-            }
-            
+            GameControl.instance.gameOver = true;
         }
 
-        if (Input.GetMouseButton (0))
+        if (GameControl.instance.gameOver == false)
         {
-            if (Flying)
+            if (Input.GetMouseButtonDown (0))
             {
-                rb2d.AddForce(new Vector2(0, FlyUpForce));
+                if (!Flying)
+                {
+                    if (DoubleJumpCount > jumpsExpended || Grounded)
+                    {
+                        jumpsExpended++;
+                        rb2d.velocity = Vector2.zero;
+                        rb2d.AddForce(new Vector2(0, JumpUpForce));
+                    }
+                }
+                else
+                {
+                    rb2d.AddForce(new Vector2(0, FlyBoost));
+
+                }
+                
             }
-            
-        }       
+
+            if (Input.GetMouseButton (0))
+            {
+                if (Flying)
+                {
+                    rb2d.AddForce(new Vector2(0, FlyUpForce));
+                }
+            }    
+        }  
     }
 
     private bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
+    }
+
+    private bool IsDead()
+    {
+        return Physics2D.OverlapCircle(deathCheck.position, 0.15f, obstacleLayer);
     }
 }

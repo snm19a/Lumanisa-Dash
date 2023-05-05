@@ -21,6 +21,9 @@ public class GameControl : MonoBehaviour
     public TMP_Text scoreText;
     public int score = 0;
     private float scorehelpthing = 0;
+
+    [Header("Obstacle Things")]
+    public List<GameObject> obstacles = new List<GameObject>();
     
     void Awake()
     {
@@ -38,15 +41,26 @@ public class GameControl : MonoBehaviour
 
     void Update()
     {
-        scrollSpeed = (StartScrollSpeed - (score / scrollSpeedDivider));
-        scorehelpthing += Time.deltaTime;
-
-        if (scorehelpthing >= 0.33f)
+        if (!gameOver)
         {
-            scorehelpthing = 0;
-            score++;
+            scrollSpeed = (StartScrollSpeed - (score / scrollSpeedDivider));
+            scorehelpthing += Time.deltaTime;
+
+            if (scorehelpthing >= 0.33f)
+            {
+                scorehelpthing = 0;
+                score++;
+            }
+        }
+        else
+        {
+            scrollSpeed = 0;
         }
         
         scoreText.text = "Score: " + score.ToString ();
+
+
+        //spawning obstacles
+
     }
 }
