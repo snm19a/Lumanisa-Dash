@@ -981,6 +981,12 @@ MonoBehaviour:
   - {fileID: -491495674, guid: 9692f34928fcddf42891b4c6ec5b02d4, type: 3}
   - {fileID: 1133155117, guid: 9692f34928fcddf42891b4c6ec5b02d4, type: 3}
   - {fileID: -357762801, guid: 72197b40aa2c74845ae4ac4ee56af8c6, type: 3}
+  skinNames:
+  - Sarianna
+  - Dor'tian
+  - Cacquilanci
+  - Silens
+  - Gitans
   playerskin: {fileID: 926402633}
 --- !u!4 &1159241895
 Transform:

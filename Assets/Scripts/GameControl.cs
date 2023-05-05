@@ -10,11 +10,11 @@ public class GameControl : MonoBehaviour
     [Header("General")]
     public static GameControl instance;
     public bool gameOver = false;
-
+    public string CharacterToLoad;
     
     [Header("Scrolling")]
     public float StartScrollSpeed = -1.5f;
-    public float scrollSpeedMultiplier;
+    public float scrollSpeedDivider;
     public float scrollSpeed;
 
     [Header("Score Things")]
@@ -33,14 +33,15 @@ public class GameControl : MonoBehaviour
             Destroy (gameObject);
         }
         scrollSpeed = StartScrollSpeed;
+        CharacterToLoad = NameStateController.selectedCharacter;
     }
 
     void Update()
     {
-        scrollSpeed = (StartScrollSpeed - (score / scrollSpeedMultiplier));
+        scrollSpeed = (StartScrollSpeed - (score / scrollSpeedDivider));
         scorehelpthing += Time.deltaTime;
 
-        if (scorehelpthing >= 1)
+        if (scorehelpthing >= 0.33f)
         {
             scorehelpthing = 0;
             score++;

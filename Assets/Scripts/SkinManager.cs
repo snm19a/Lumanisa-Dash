@@ -8,9 +8,9 @@ public class SkinManager : MonoBehaviour
 {
     public SpriteRenderer sr;
     public List<Sprite> skins = new List<Sprite>();
+    public List<string> skinNames = new List<string>();
     private int selectedSkin = 0;
     public GameObject playerskin;
-
 
 
     public void NextOption()
@@ -34,6 +34,7 @@ public class SkinManager : MonoBehaviour
 
     public void PlayGame()
     {
+        NameStateController.selectedCharacter = skinNames[selectedSkin];
         SceneManager.LoadScene("RunLevel");
     }
 }
