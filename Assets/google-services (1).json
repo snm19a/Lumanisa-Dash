@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "772213048287",
+    "firebase_url": "https://lumanisa-dash-default-rtdb.firebaseio.com",
+    "project_id": "lumanisa-dash",
+    "storage_bucket": "lumanisa-dash.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:772213048287:android:d8a98943ca9c1348623a6a",
+        "android_client_info": {
+          "package_name": "com.TheEmeraldDragonStudio.LumanisaDash"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "772213048287-bkdv83dptqaspcr7eq3227l5du1sc1un.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSPK8agxaIkzJvwdvIwQL-KDk1A_GKpws"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "772213048287-bkdv83dptqaspcr7eq3227l5du1sc1un.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
