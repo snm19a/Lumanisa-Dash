@@ -85,6 +85,6 @@ public class PlayerScript : MonoBehaviour
 
     private bool IsDead()
     {
-        return Physics2D.OverlapCircle(deathCheck.position, 0.15f, obstacleLayer);
+        return Physics2D.OverlapCircle(deathCheck.position, 0.4f, obstacleLayer);
     }
 }

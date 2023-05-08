@@ -24,6 +24,10 @@ public class GameControl : MonoBehaviour
 
     [Header("Obstacle Things")]
     public List<GameObject> obstacles = new List<GameObject>();
+    public GameObject obstacleSpawnPoint;
+    public float spawnFrequency;
+    public float obstacleRateDivider;
+    private float spawnHelpThing;
     
     void Awake()
     {
@@ -37,6 +41,8 @@ public class GameControl : MonoBehaviour
         }
         scrollSpeed = StartScrollSpeed;
         CharacterToLoad = NameStateController.selectedCharacter;
+
+        spawnHelpThing = spawnFrequency;
     }
 
     void Update()
@@ -51,6 +57,13 @@ public class GameControl : MonoBehaviour
                 scorehelpthing = 0;
                 score++;
             }
+
+            spawnHelpThing -= Time.deltaTime;
+            if (spawnHelpThing < 0)
+            {
+                spawnHelpThing = spawnFrequency - (score / obstacleRateDivider);
+                ObstacleSpawner();
+            }
         }
         else
         {
@@ -61,6 +74,12 @@ public class GameControl : MonoBehaviour
 
 
         //spawning obstacles
-
     }
+
+    void ObstacleSpawner()
+    {
+        GameObject temp = Instantiate(obstacles[Random.Range(0, obstacles.Count)], obstacleSpawnPoint.transform.position, obstacleSpawnPoint.transform.rotation);
+    }
+
+
 }
